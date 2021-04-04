@@ -26,7 +26,7 @@ app.post("/", function(req, res) {
   const email = req.body.email;
 
   const data = {
-    members: [{   //refer the video for a brief understanding of this object....
+    members: [{
       email_address: email,
       status: "subscribed",
       merge_fields: {
@@ -72,11 +72,7 @@ app.post("/failure",function(req,res){
 });
 
 
-//appid
-// 0352234c6f48baaead31192c95243986-us7
 
-//list id
-// ae6c3c6760
 
 
 
