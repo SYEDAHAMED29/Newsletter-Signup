@@ -1,3 +1,5 @@
+
+// jshint esversion: 6
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -10,6 +12,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+require('dotenv').config();
+
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/signup.html");
@@ -34,11 +38,13 @@ app.post("/", function(req, res) {
 
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us7.api.mailchimp.com/3.0/lists/ae6c3c6760";
+  const api = process.env.APIKEY;
+  const listId = process.env.listId;
+  const url = "https://us7.api.mailchimp.com/3.0/lists/" + listId;
   const options = {
     method: "POST",
-    auth: "Syed1:0352234c6f48baaead31192c95243986-us7"
-  }
+    auth: "Syed1:"+ api
+  };
 
   const request = https.request(url, options, function(response){
 
